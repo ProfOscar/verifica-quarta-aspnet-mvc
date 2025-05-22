@@ -1,0 +1,29 @@
+﻿<h2>Elenco corsi</h2>
+
+<table class="table table-striped table-bordered">
+	<thead>
+		<tr>
+			<th>Titolo</th>
+			<th>Autore</th>
+			<th>Prezzo</th>
+			<th>Rating</th>
+			<th>Azioni</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var corso in Model)
+		{
+			<tr>
+				<td>@corso.Title</td>
+				<td>@corso.Author</td>
+				<td>@corso.CurrentPrice_Amount @corso.CurrentPrice_Currency</td>
+				<td>@corso.Rating.ToString("#.##")</td>
+				<td>
+					<a asp-action="Details" asp-route-id="@corso.Id" class="btn btn-info btn-sm">Dettagli</a>
+					<a asp-action="Edit" asp-route-id="@corso.Id" class="btn btn-warning btn-sm">Modifica</a>
+					<a asp-action="Delete" asp-route-id="@corso.Id" class="btn btn-danger btn-sm">Elimina</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
